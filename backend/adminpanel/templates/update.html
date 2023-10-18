@@ -1,0 +1,465 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
+        <!-- Navbar -->
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl"
+             id="navbarBlur"
+             navbar-scroll="true">
+            <div class="container-fluid py-3 px-3">
+                <nav aria-label="breadcrumb">
+                    <h6 class="font-weight-bolder mb-0 text-lg mx-4">MAIN NAVIGATION UPDATE</h6>
+                </nav>
+            </div>
+        </nav>
+        <!-- End Navbar -->
+        <style>
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .card {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #f5f5f5;
+      padding: 20px;
+    }
+
+    .card-body {
+      padding: 0;
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    textarea,
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      height: 100px;
+    }
+
+    button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    button:active {
+      background-color: #3e8948;
+    }
+
+    button:focus {
+      outline: none;
+    }
+
+    .container-fluid {
+        max-width: 99%;
+    overflow: hidden;
+        padding: 0 20px; 
+      }
+        </style>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 mx-5">
+                    <div class="card my-4">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="bg-gray-800 radius-sm pt-4 pb-3">
+                                <h6 class="text-white text-capitalize ps-3 text-lg">UPDATE NAVIGATION</h6>
+                            </div>
+                        </div>
+                        <div class="card-body px-0 pb-2">
+                            <form method="post" action="" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="d-flex align-items-center mx-3">
+                                    <label class="mr-3">Name:</label>
+                                    <div class="col-4">
+                                        <input type="text" name="name" value="{{ data.name }}" />
+                                    </div>
+                                </div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="pb-4"></div>
+                                {% comment %} ................. ..............{% endcomment %}
+                                <div class="d-flex align-items-center mx-3">
+                                    <label class="mr-1">Caption:</label>
+                                    <div class="col-6">
+                                        <input type="text" name="caption" value="{{ data.caption }}" />
+                                    </div>
+                                </div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="pb-5"></div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="d-flex align-items-center mx-4">
+                                    <label class="mr-3">Status:</label>
+                                    <select name="status" value="{{ data.status }}">
+                                        <option value="">Select Status</option>
+                                        <option value="Publish"{% if data.status == "Publish" %}selected{% endif %}>Publish</option>
+                                        <option value="Draft"{% if data.status == "Draft" %}selected{% endif %}>Draft</option>
+                                    </select>
+                                    {% comment %} ...............................{% endcomment %}
+                                    <div class="col-1"></div>
+                                    {% comment %} ...............................{% endcomment %}
+                                    <label class="mr-2">Position:</label>
+                                    <div class="col-1">
+                                        <input type="number" name="position" value="{{ data.position }}" />
+                                    </div>
+                                    {% comment %} ...............................{% endcomment %}
+                                    <div class="col-1"></div>
+                                    {% comment %} ...............................{% endcomment %}
+                                    <label>Page Type</label>
+                                    <select type="text" name="page_type" value="{{ data.page_type }}">
+                                        <option value="">Select Page Type</option>
+                                        <option value="Home"
+                                                {% if data.page_type == "Home" %}selected="selected"{% endif %}>
+                                            Home
+                                        </option>
+                                        <option value="Aboutus"
+                                                {% if data.page_type == "Aboutus" %}selected="selected"{% endif %}>
+                                            Aboutus
+                                        </option>
+                                        <option value="Portfolio"
+                                                {% if data.page_type == "Portfolio" %}selected="selected"{% endif %}>
+                                            Portfolio
+                                        </option>
+                                        <option value="Profile"
+                                                {% if data.page_type == "Profile" %}selected="selected"{% endif %}>
+                                            Profile
+                                        </option>
+                                        <option value="Service"
+                                                {% if data.page_type == "Service" %}selected="selected"{% endif %}>
+                                            Service
+                                        </option>
+                                        <option value="BoardGovernance"
+                                                {% if data.page_type == "BoardGovernance" %}selected="selected"{% endif %}>
+                                            BoardGovernance
+                                        </option>
+                                        <option value="MessagefromPresident"
+                                                {% if data.page_type == "MessagefromPresident" %}selected="selected"{% endif %}>
+                                            MessagefromPresident
+                                        </option>
+                                        <option value="ServiceData"
+                                                {% if data.page_type == "ServiceData" %}selected="selected"{% endif %}>
+                                            ServiceData
+                                        </option>
+                                        <option value="Course"
+                                                {% if data.page_type == "Course" %}selected="selected"{% endif %}>
+                                            Course
+                                        </option>
+                                        <option value="Aboutus"
+                                                {% if data.page_type == "Aboutus" %}selected="selected"{% endif %}>
+                                            Aboutus
+                                        </option>
+                                        <option value="Banner"
+                                                {% if data.page_type == "Banner" %}selected="selected"{% endif %}>
+                                            Banner
+                                        </option>
+                                        <option value="Recent Project"
+                                                {% if data.page_type == "RecentProject" %}selected="selected"{% endif %}>
+                                            RecentProject
+                                        </option>
+                                        <option value="Upcoming Project"
+                                                {% if data.page_type == "Upcoming Project" %}selected="selected"{% endif %}>
+                                            Upcoming Project
+                                        </option>
+                                        <option value="Past Program"
+                                                {% if data.page_type == "Past Program" %}selected="selected"{% endif %}>
+                                            Past Program
+                                        </option>
+                                        <option value="Message"
+                                                {% if data.page_type == "Message" %}selected="selected"{% endif %}>
+                                            Message
+                                        </option>
+                                        <option value="MessageHome"
+                                                {% if data.page_type == "MessageHome" %}selected="selected"{% endif %}>
+                                            MessageHome
+                                        </option>
+                                        <option value="Vision"
+                                                {% if data.page_type == "Vision" %}selected="selected"{% endif %}>
+                                            Vision
+                                        </option>
+                                        <option value="AboutIndreni"
+                                                {% if data.page_type == "AboutIndreni" %}selected="selected"{% endif %}>
+                                            AboutIndreni
+                                        </option>
+                                        <option value="Guideline Principle"
+                                                {% if data.page_type == "Guideline Principle" %}selected="selected"{% endif %}>
+                                            Guideline Principle
+                                        </option>
+                                        <option value="Organizational Process"
+                                                {% if data.page_type == "Organizational Process" %}selected="selected"{% endif %}>
+                                            Organizational Process
+                                        </option>
+                                        <option value="Our History"
+                                                {% if data.page_type == "Our History" %}selected="selected"{% endif %}>
+                                            Our History
+                                        </option>
+                                        <option value="Our Mission"
+                                                {% if data.page_type == "Our Mission" %}selected="selected"{% endif %}>
+                                            Our Mission
+                                        </option>
+                                        <option value="Services"
+                                                {% if data.page_type == "Services" %}selected="selected"{% endif %}>
+                                            Services
+                                        </option>
+                                        <option value="Side Notice"
+                                                {% if data.page_type == "Side Notice" %}selected="selected"{% endif %}>
+                                            Side Notice
+                                        </option>
+                                        <option value="Uniqueness Indreni"
+                                                {% if data.page_type == "Uniqueness Indreni" %}selected="selected"{% endif %}>
+                                            Uniqueness Indreni
+                                        </option>
+                                        <option value="Objectives"
+                                                {% if data.page_type == "Objectives" %}selected="selected"{% endif %}>
+                                            Objectives
+                                        </option>
+                                        <option value="Vision Menu"
+                                                {% if data.page_type == "Vision Menu" %}selected="selected"{% endif %}>
+                                            Vision Menu
+                                        </option>
+                                        <option value="Running Program"
+                                                {% if data.page_type == "Running Program" %}selected="selected"{% endif %}>
+                                            Running Program
+                                        </option>
+                                        <option value="Running Program Data"
+                                                {% if data.page_type == "Running Program Data" %}selected="selected"{% endif %}>
+                                            Running Program Data
+                                        </option>
+                                        <option value="Upcoming Program"
+                                                {% if data.page_type == "Upcoming Program" %}selected="selected"{% endif %}>
+                                            Upcoming Program
+                                        </option>
+                                        <option value="Upcoming Program Data"
+                                                {% if data.page_type == "Upcoming Program Data" %}selected="selected"{% endif %}>
+                                            Upcoming Program Data
+                                        </option>
+                                        <option value="Past Program Submenu"
+                                                {% if data.page_type == "Past Program Submenu" %}selected="selected"{% endif %}>
+                                            Past Program Submenu
+                                        </option>
+                                        <option value="Past Program Submenu Data"
+                                                {% if data.page_type == "Past Program Submenu Data" %}selected="selected"{% endif %}>
+                                            Past Program Submenu Data
+                                        </option>
+                                        <option value="Achievements"
+                                                {% if data.page_type == "Achievements" %}selected="selected"{% endif %}>
+                                            Achievements
+                                        </option>
+                                        <option value="Membership"
+                                                {% if data.page_type == "Membership" %}selected="selected"{% endif %}>
+                                            Membership
+                                        </option>
+                                        <option value="Job Vacancy"
+                                                {% if data.page_type == "Job Vacancy" %}selected="selected"{% endif %}>
+                                            Job Vacancy
+                                        </option>
+                                        <option value="Life Member"
+                                                {% if data.page_type == "Life Member" %}selected="selected"{% endif %}>
+                                            Life Member
+                                        </option>
+                                        <option value="Life Member Data"
+                                                {% if data.page_type == "Life Member Data" %}selected="selected"{% endif %}>
+                                            Life Member Data
+                                        </option>
+                                        <option value="Feedback"
+                                                {% if data.page_type == "Feedback" %}selected="selected"{% endif %}>
+                                            Feedback
+                                        </option>
+                                        <option value="Group"
+                                                {% if data.page_type == "Group" %}selected="selected"{% endif %}>
+                                            Group
+                                        </option>
+                                        <option value="Contact"
+                                                {% if data.page_type == "Contact" %}selected="selected"{% endif %}>
+                                            Contact
+                                        </option>
+                                        <option value="News Detail"
+                                                {% if data.page_type == "News Detail" %}selected="selected"{% endif %}>
+                                            News Detail
+                                        </option>
+                                        <option value="News Detail Data"
+                                                {% if data.page_type == "News Detail Data" %}selected="selected"{% endif %}>
+                                            News Detail Data
+                                        </option>
+                                        <option value="News"
+                                                {% if data.page_type == "News" %}selected="selected"{% endif %}>
+                                            News
+                                        </option>
+                                    </select>
+                                    {% comment %} ...............................{% endcomment %}
+                                    <div class="col-1"></div>
+                                    {% comment %} ...............................{% endcomment %}
+                                    <label class="mr-2">Parent:</label>
+                                    <div class="col-1">
+                                        <input type="number" name="Parent" value="{{ parent_id }}" />
+                                    </div>
+                                </div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="pb-5"></div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="d-flex align-items-center mx-4">
+                                    <label class="mr-2">Title:</label>
+                                    <div class="col-6">
+                                        <input type="text" name="title" value="{{ data.title }}" />
+                                    </div>
+                                </div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="pb-5"></div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="d-flex align-items-center mx-4">
+                                    <label class="mr-2">Short Description:</label>
+                                    <div class="col-10">
+                                        <textarea name="short_desc"
+                                                  class="summernote"
+                                                  id="summernote"
+                                                  style="height: 150px;
+                                                         resize: vertical">{{ data.short_desc }}</textarea>
+                                    </div>
+                                </div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="pb-5"></div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="d-flex align-items-center mx-4">
+                                    <label class="mr-2">Description:</label>
+                                    <div class="col-10">
+                                        <textarea name="desc"
+                                                  class="summernote"
+                                                  id="summernote"
+                                                  style="height: 180px;
+                                                         resize: vertical">{{ data.desc }}</textarea>
+                                    </div>
+                                </div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="pb-5"></div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="d-flex align-items-center mx-4">
+                                    <label class="mr-2">PhotoDate:</label>
+                                    <div class="col-10">
+                                        <input type="date"
+                                               id="photodate"
+                                               name="photodate"
+                                               value="{{ existing_photodate }}">
+                                    </div>
+                                </div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="pb-5"></div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="d-flex align-items-center mx-4">
+                                    <label class="mr-2">Video:</label>
+                                    <div class="col-10">
+                                        <input type="file" name="video_file">
+                                        {{ data.video_file }}
+                                    </div>
+                                </div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="pb-5"></div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="d-flex align-items-center mx-4">
+                                    <label class="mr-1">Meta Title:</label>
+                                    <div class="col-4">
+                                        <input type="text" name="meta_title" value="{{ data.meta_title }}" />
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <label class="mr-1">Meta Keyword:</label>
+                                    <div class="col-4">
+                                        <input type="text" name="meta_keyword" value="{{ data.meta_keyword }}" />
+                                    </div>
+                                </div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="pb-5"></div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="d-flex align-items-center mx-4">
+                                    <label class="mr-2">Banner Image:</label>
+                                    <div class="col-4">
+                                        <input type="file" name="bannerimage" value="{{ data.bannerimage }}" />
+                                        {% if data.bannerimage %}
+                                            <img src="{{ data.bannerimage.url }}" style="max-width: 50%; height: auto" />
+                                        {% endif %}
+                                    </div>
+                                    {% comment %} ...............................{% endcomment %}
+                                    <div class="col-1"></div>
+                                    {% comment %} ...............................{% endcomment %}
+                                    <label class="mr-2">Icon Image:</label>
+                                    <div class="col-4">
+                                        <input type="file" name="icon_image" value="{{ data.icon_image }}" />
+                                        {% if data.icon_image %}
+                                            <img src="{{ data.icon_image.url }}" style="max-width: 50%; height: auto" />
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="pb-5"></div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="d-flex align-items-center mx-4">
+                                    <label class="mr-2">Slider Image:</label>
+                                    <div class="col-4">
+                                        <input type="file" name="slider_image" value="{{ data.slider_image }}" />
+                                        {% if data.slider_image %}
+                                            <img src="{{ data.slider_image.url }}"
+                                                 style="max-width: 50%;
+                                                        height: auto" />
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="pb-6"></div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="col-6 mt-5">
+                                    <div class="col-12 p-2">
+                                        <label>Brochure</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <input type="file" name="brochure">
+                                        {% if data.brochure %}
+                                            <a href="{{ data.brochure.url }}" target="_blank">{{ data.brochure }}
+                                                {% comment %} <img src="{{ obj.brochure.url }}" style="max-width: 50%; height: auto"> {% endcomment %}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="container">
+                                            <div class="row"></div>
+                                        </div>
+                                        <div class="col-6 mt-5">
+                                            <div class="col-12">
+                                                <button type="submit" class="btn btn-primary mx-4 btn-lg">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}

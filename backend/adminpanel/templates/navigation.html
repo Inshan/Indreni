@@ -1,0 +1,314 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
+        <!-- Navbar -->
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl"
+             id="navbarBlur"
+             navbar-scroll="true">
+            <div class="container-fluid py-3 px-3">
+                <nav aria-label="breadcrumb">
+                    <h6 class="font-weight-bolder mb-0 text-lg mx-4">CREATE NAVIGATION</h6>
+                </nav>
+            </div>
+        </nav>
+        <!-- End Navbar -->
+        <style>
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .card {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #f5f5f5;
+      padding: 20px;
+    }
+
+    .card-body {
+      padding: 0;
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    textarea,
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      height: 100px;
+    }
+
+    button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    button:active {
+      background-color: #3e8948;
+    }
+
+    button:focus {
+      outline: none;
+    }
+
+    .container-fluid {
+        max-width: 99%;
+    overflow: hidden;
+        padding: 0 20px; 
+      }
+        </style>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 mx-5">
+                    <div class="card my-4">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="bg-gray-800 radius-sm pt-4 pb-3">
+                                <h6 class="text-white text-capitalize ps-3 text-lg">CREATE NEW NAVIGATION</h6>
+                            </div>
+                        </div>
+                        <div class="card-body px-0 pb-2">
+                            <form method="post"
+                                  action="{% url 'navigation' %}"
+                                  enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="d-flex align-items-center mx-3">
+                                    <label class="mr-3">Name:</label>
+                                    <div class="col-4">
+                                        <input type="text" name="name" required />
+                                    </div>
+                                </div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="pb-4"></div>
+                                {% comment %} ................. ..............{% endcomment %}
+                                <div class="d-flex align-items-center mx-3">
+                                    <label class="mr-1">Caption:</label>
+                                    <div class="col-6">
+                                        <input type="text" name="caption" />
+                                    </div>
+                                </div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="pb-5"></div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="d-flex align-items-center mx-4">
+                                    <label class="mr-3">Status:</label>
+                                    <select name="status" required>
+                                        <option value="">Select Status</option>
+                                        <option value="Publish">Publish</option>
+                                        <option value="Draft">Draft</option>
+                                    </select>
+                                    {% comment %} ...............................{% endcomment %}
+                                    <div class="col-1"></div>
+                                    {% comment %} ...............................{% endcomment %}
+                                    <label class="mr-2">Position:</label>
+                                    <div class="col-1">
+                                        <input type="number" name="position" />
+                                    </div>
+                                    {% comment %} ...............................{% endcomment %}
+                                    <div class="col-1"></div>
+                                    {% comment %} ...............................{% endcomment %}
+                                    <label>Page Type</label>
+                                    <select name="page_type" required>
+                                        <option value="">Select Page Type</option>
+                                        <option value="Home">Home</option>
+                                        <option value="Aboutus">Aboutus</option>
+                                        <option value="Portfolio">Portfolio</option>
+                                        <option value="Profile">Profile</option>
+                                        <option value="Service">Service</option>
+                                        <option value="BoardGovernance">BoardGovernance</option>
+                                        <option value="MessagefromPresident">MessagefromPresident</option>
+                                        <option value="ServiceData">ServiceData</option>
+                                        <option value="Course">Course</option>
+                                        <option value="Banner">Banner</option>
+                                        <option value="BannerData">BannerData</option>
+                                        <option value="Aboutus">Aboutus</option>
+                                        <option value="Recent Project">Recent Project</option>
+                                        <option value="Upcoming Project">Upcoming Project</option>
+                                        <option value="Past Program">Past Program</option>
+                                        <option value="News">News</option>
+                                        <option value="Vision">Vision</option>
+                                        <option value="Message">Message</option>
+                                        <option value="MessageHome">MessageHome</option>
+                                        <option value="AboutIndreni">AboutIndreni</option>
+                                        <option value="Guideline Principle">Guideline Principle</option>
+                                        <option value="Organizational Process">Organizational Process</option>
+                                        <option value="Our History">Our History</option>
+                                        <option value="Our Mission">Our Mission</option>
+                                        <option value="Services">Services</option>
+                                        <option value="Side Notice">Side Notice</option>
+                                        <option value="Uniqueness Indreni">Uniqueness Indreni</option>
+                                        <option value="Objectives">Objectives</option>
+                                        <option value="Vision Menu">Vision Menu</option>
+                                        <option value="Running Program">Running Program</option>
+                                        <option value="Upcoming Program">Upcoming Program</option>
+                                        <option value="Past Program Submenu">Past Program SubMenu</option>
+                                        <option value="Running Program Data">Running Program Data</option>
+                                        <option value="Upcoming Program Data">Upcoming Program Data</option>
+                                        <option value="Past Program Submenu Data">Past Program Submenu Data</option>
+                                        <option value="Achievements">Achievements</option>
+                                        <option value="Membership">Membership</option>
+                                        <option value="Contact">Contact</option>
+                                        <option value="Job Vacancy">Job Vacancy</option>
+                                        <option value="Life Member">Life Member</option>
+                                        <option value="Life Member Data">Life Member Data</option>
+                                        <option value="Feedback">Feedback</option>
+                                        <option value="Group">Group</option>
+                                        <option value="Contact">Contact</option>
+                                        <option value="News Detail">News Detail</option>
+                                        <option value="News Detail Data">News Detail Data</option>
+                                        <option value="News">News</option>
+                                </select>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="col-1"></div>
+                                {% comment %} ...............................{% endcomment %}
+                                <label class="mr-2">Parent:</label>
+                                <div class="col-1">
+                                    <input type="number" name="Parent" value="{{ parent_id }}" />
+                                </div>
+                            </div>
+                            {% comment %} ...............................{% endcomment %}
+                            <div class="pb-5"></div>
+                            {% comment %} ...............................{% endcomment %}
+                            <div class="d-flex align-items-center mx-4">
+                                <label class="mr-2">Title:</label>
+                                <div class="col-6">
+                                    <input type="text" name="title" />
+                                </div>
+                            </div>
+                            {% comment %} ...............................{% endcomment %}
+                            <div class="pb-5"></div>
+                            {% comment %} ...............................{% endcomment %}
+                            <div class="d-flex align-items-center mx-4">
+                                <label class="mr-2">Short Description:</label>
+                                <div class="col-10">
+                                    <textarea name="short_desc"
+                                              class="summernote"
+                                              id="summernote"
+                                              style="height: 150px;
+                                                     resize: vertical"></textarea>
+                                </div>
+                            </div>
+                            {% comment %} ...............................{% endcomment %}
+                            <div class="pb-5"></div>
+                            {% comment %} ...............................{% endcomment %}
+                            <div class="d-flex align-items-center mx-4">
+                                <label class="mr-2">Description:</label>
+                                <div class="col-10">
+                                    <textarea name="desc"
+                                              class="summernote"
+                                              id="summernote"
+                                              style="height: 180px;
+                                                     resize: vertical"></textarea>
+                                </div>
+                            </div>
+                            {% comment %} ...............................{% endcomment %}
+                            <div class="pb-5"></div>
+                            {% comment %} ...............................{% endcomment %}
+                            <div class="d-flex align-items-center mx-4">
+                                <label class="mr-2">Photodate:</label>
+                                <div class="col-10">
+                                    <input type="date" id="photodate" name="photodate">
+                                </div>
+                            </div>
+                            {% comment %} ...............................{% endcomment %}
+                            <div class="pb-5"></div>
+                            {% comment %} ...............................{% endcomment %}
+                            <div class="d-flex align-items-center mx-4">
+                                <label class="mr-2">Video:</label>
+                                <div class="col-10">
+                                    <input type="file" name="video_file">
+                                </div>
+                            </div>
+                            {% comment %} ...............................{% endcomment %}
+                            <div class="pb-5"></div>
+                            {% comment %} ...............................{% endcomment %}
+                            <div class="d-flex align-items-center mx-4">
+                                <label class="mr-1">Meta Title:</label>
+                                <div class="col-4">
+                                    <input type="text" name="meta_title" />
+                                </div>
+                                <div class="col-1"></div>
+                                <label class="mr-1">Meta Keyword:</label>
+                                <div class="col-4">
+                                    <input type="text" name="meta_keyword" />
+                                </div>
+                            </div>
+                            {% comment %} ...............................{% endcomment %}
+                            <div class="pb-5"></div>
+                            {% comment %} ...............................{% endcomment %}
+                            <div class="d-flex align-items-center mx-4">
+                                <label class="mr-2">Banner Image:</label>
+                                <div class="col-4">
+                                    <input type="file" name="bannerimage" />
+                                    {% if obj.bannerimage %}
+                                        <img src="{{ obj.bannerimage.url }}" style="max-width: 50%; height: auto" />
+                                    {% endif %}
+                                </div>
+                                {% comment %} ...............................{% endcomment %}
+                                <div class="col-1"></div>
+                                {% comment %} ...............................{% endcomment %}
+                                <label class="mr-2">Icon Image:</label>
+                                <div class="col-4">
+                                    <input type="file" name="icon_image" />
+                                    {% if obj.icon_image %}
+                                        <img src="{{ obj.icon_image.url }}" style="max-width: 50%; height: auto" />
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% comment %} ...............................{% endcomment %}
+                            <div class="pb-5"></div>
+                            {% comment %} ...............................{% endcomment %}
+                            <div class="d-flex align-items-center mx-4">
+                                <label class="mr-2">Slider Image:</label>
+                                <div class="col-4">
+                                    <input type="file" name="slider_image" />
+                                    {% if obj.slider_image %}
+                                        <img src="{{ obj.slider_image.url }}" style="max-width: 50%; height: auto" />
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% comment %} ...............................{% endcomment %}
+                            <div class="pb-6"></div>
+                            {% comment %} ...............................{% endcomment %}
+                            <button type="submit" class="btn btn-primary mx-4 btn-lg">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</main>
+{% endblock content %}

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://kit.fontawesome.com/a75fb6ec59.js" crossorigin="anonymous"></script>
+  <title>Indreni Nepal </title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+  <script>
+    $(window).scroll(function () {
+
+      if ($(this).scrollTop() > 100) {
+        $('.header_nav').addClass('fixed_top')
+      } else {
+        $('.header_nav').removeClass('fixed_top')
+      }
+    })
+  </script>
+</body>
+
+</html>

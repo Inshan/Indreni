@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+        <!-- Navbar -->
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl"
+             id="navbarBlur"
+             navbar-scroll="true">
+            <div class="container-fluid py-1 px-3">
+                <nav aria-label="breadcrumb">
+                    <h6 class="font-weight-bolder mb-0 mx-4">MEMBERSHIP VIEW</h6>
+                </nav>
+            </div>
+        </nav>
+        <style>
+      .navbar-main.navbar-expand-lg{
+            max-width: 19rem !important;
+        }
+        .container-fluid {
+          max-width: 99%;
+          overflow: hidden;
+          padding: 0 20px; 
+        }
+        </style>
+        <!-- End Navbar -->
+        <div class="container-fluid py-4">
+            <div class="row">
+                <div class="col-12 mx-5">
+                    <div class="card my-4">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                                <h6 class="text-white text-capitalize ps-3">MEMBERSHIP VIEW</h6>
+                            </div>
+                        </div>
+                        <div class="container-fluid py-4">
+                            <div class="card-body px-0 pb-2">
+                                <div class="table-responsive p-0">
+                                    <table class="text-lg w-full font-sans table align-items-center mb-0">
+                                        {% for objs in con %}
+                                            <tbody>
+                                                {% comment %} <p>
+                                                    <tr class="bg-gray-700 text-white text-center">S NO. : {{ forloop.counter }}</tr>
+                                                </p> {% endcomment %}
+                                                <p>
+                                                    <tr class="bg-gray-700 text-white text-center">NAME : {{ objs.name }}</tr>
+                                                </p>
+                                                <p>
+                                                    <tr class="bg-gray-700 text-white text-center">ADDRESS : {{ objs.address }}</tr>
+                                                </p>
+                                                <p>
+                                                    <tr class="bg-gray-700 text-white text-center">GENDER : {{ objs.gender }}</tr>
+                                                </p>
+                                                <p>
+                                                    <tr class="bg-gray-700 text-white text-center">DATE OF BIRTH : {{ objs.dateofbirth }}</tr>
+                                                </p>
+                                                <p>
+                                                    <tr class="bg-gray-700 text-white text-center">MOBILE NO. : {{ objs.mobileno }}</tr>
+                                                </p>
+                                                <p>
+                                                    <tr class="bg-gray-700 text-white text-center">EMAIL : {{ objs.email }}</tr>
+                                                </p>
+                                                <p>
+                                                    <tr class="bg-gray-700 text-white text-center">EDUCATION : {{ objs.education }}</tr>
+                                                </p>
+                                                <p>
+                                                    <tr class="bg-gray-700 text-white text-center">PROFESSION : {{ objs.prof }}</tr>
+                                                </p>
+                                                <p>
+                                                    <tr class="bg-gray-700 text-white text-center">COURSE LEVEL : {{ objs.courselevel }}</tr>
+                                                </p>
+                                                <p>
+                                                    <tr class="bg-gray-700 text-white text-center">NATIONALITY : {{ objs.nationality }}</tr>
+                                                </p>
+                                                <p>
+                                                    <tr class="bg-gray-700 text-white text-center">
+                                                        <div class="btn-group">
+                                                            <a href="{% url 'course' %}">
+                                                                <button type="submit" class="btn btn-primary btn-lg mr-3">BACK</button>
+                                                            </a>
+                                                        </div>
+                                                    </tr>
+                                                </p>
+                                            </tbody>
+                                        {% endfor %}
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+      function myFunction(event) {
+          var confirmation = confirm("Are you sure you want to delete?");
+          if (confirmation === true) {
+              // Continue with form submission (delete action)
+              event.target.parentNode.submit(); // Manually submit the form
+          } 
+      }
+        </script>
+    {% endblock content %}

@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl"
+         id="navbarBlur"
+         navbar-scroll="true">
+      <div class="container-fluid py-3 px-5">
+        <nav aria-label="breadcrumb">
+          <div class="container-right">
+            {% if parent_id %}
+              <a href="{% url 'navigation' parent_id=parent_id %}">
+              {% else %}
+                <a href="{% url 'navigation' %}">
+                {% endif %}
+                <button type="submit" class="btn btn-primary text-lg mx-4">Create New</button>
+              </a>
+            </div>
+          </nav>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <style>
+      .navbar-main.navbar-expand-lg{
+        max-width: 19rem !important;
+    }
+      </style>
+      <style>
+       .table-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      } 
+      .table-container table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .fadeTable {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.5s ease-in;
+      }
+      .btn-success {
+        color: #fff;
+        background-color: #228B22;
+    }
+    
+    .container-fluid {
+      max-width: 99%;
+  overflow: hidden;
+      padding: 0 20px; 
+    }
+      </style>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12 mx-5">
+            <div class="card my-4">
+              <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                <div class="bg-gray-800 radius-sm pt-4 pb-3">
+                  <h6 class="text-white text-capitalize ps-3 text-lg">MAIN NAVIGATION DETAILS</h6>
+                </div>
+              </div>
+              <div class="px-3 pb-2 my-2">
+                <div class="table-responsive p-0">
+                  <div class="table-container">
+                    <table class="text-lg w-full font-sans">
+                      <thead>
+                        <tr class="bg-gray-700 text-white text-center">
+                          <th class="p-4 border">S NO.</th>
+                          <th class="p-4 border">NAME</th>
+                          <th class="p-4 border">PAGE TYPE</th>
+                          <th class="p-4 border">POSITION</th>
+                          <th class="p-4 border">STATUS</th>
+                          <th class="p-4 border">SLIDER IMAGE</th>
+                          <th class="p-4 border">ACTIONS</th>
+                          <th class="p-4 border">OPEN</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for objs in obj %}
+                          <tr class="text-center">
+                            <td class="p-4 border">{{ forloop.counter }}</td>
+                            <td class="p-4 border">{{ objs.name }}</td>
+                            <td class="p-4 border">{{ objs.page_type }}</td>
+                            <td class="p-4 border">{{ objs.position }}</td>
+                            <td class="p-4 border">{{ objs.status }}</td>
+                            <td class="p-4 border text-center">
+                              {% if objs.slider_image %}
+                                <img src="{{ objs.slider_image.url }}"
+                                     class="mx-auto d-block"
+                                     style="max-width: 150px;
+                                            max-height: 150px" />
+                              {% endif %}
+                            </td>
+                            <td class="p-4 border">
+                              <div class="btn-group">
+                                <a href="{% url 'update' pk=objs.pk %}">
+                                  <button type="submit" class="btn btn-primary btn-lg mr-3">EDIT</button>
+                                </a>
+                                <form method="post" action="{% url 'delete_nav' pk=objs.pk %}">
+                                  {% csrf_token %}
+                                  <button type="button"
+                                          class="btn-danger btn-lg border-0"
+                                          onclick="myFunction(event)">Delete</button>
+                                  <p class="confirmation-msg"></p>
+                                </form>
+                              </div>
+                            </td>
+                            <td class="p-4 border">
+                              {% if objs.page_type == "Group" %}
+                                <a href="{% url 'main_navigation' parent_id=objs.pk %}">
+                                  <button type="button" class="btn-success btn-lg">Open</button>
+                                </a>
+                              {% endif %}
+                            </td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% comment %} </div> {% endcomment %}
+      <!-- JavaScript function -->
+      <script>
+  function myFunction(event) {
+      var confirmation = confirm("Are you sure you want to delete?");
+      if (confirmation === true) {
+          // Continue with form submission (delete action)
+          event.target.parentNode.submit(); // Manually submit the form
+      }
+  }
+      </script>
+    </main>
+  {% endblock content %}

@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.fixed_top {
+    background-color: #F9F9F9;
+    opacity: 1;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    animation: nav_fixed 0.7s;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+}
+
+.fixed_top a {
+    color: #1450A3 !important;
+    font-weight: 500;
+}
+
+@keyframes nav_fixed {
+    0% {
+        transform: translateY(-100px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@media screen and (max-width: 410px) {
+    .fixed_top {
+        background-color: #1450A3;
+    }
+    .fixed_top a {
+        color: #F9F9F9 !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .fixed_top {
+        background-color: #1450A3;
+    }
+    .fixed_top a {
+        color: #F9F9F9 !important;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .fixed_top {
+        background-color: #1450A3;
+    }
+    .fixed_top a {
+        color: #F9F9F9 !important;
+    }
+}
+
+.slick-track {
+    display: flex;
+    /* gap: 1rem */
+}
+
+/* .slick-prev:before,
+.slick-next:before {
+    color: red;
+
+}
+
+.slick-dots li button:before {
+    color: red;
+} */
+
